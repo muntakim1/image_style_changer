@@ -50,8 +50,7 @@ def FileUpload():
 
                 content_image = load_image('./static/images/0.jpg', content_img_size)
                 style_image = load_image('./static/styles/'+k+'.jpg', style_img_size)
-                # print(content_image,style_image)
-                # style_image = tf.nn.avg_pool(style_image, ksize=[3,3], strides=[1,1], padding='SAME')
+                style_image = tf.nn.avg_pool(style_image, ksize=[3,3], strides=[1,1], padding='SAME')
                 outputs = hub_module(tf.constant(content_image), tf.constant(style_image))
                 stylized_image = outputs[0]
                 print(stylized_image)
